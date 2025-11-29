@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Include essential user data in backup to ensure seamless device transition -->
+    
+    <!-- Include the entire database to preserve user's financial history -->
+    <include domain="database" />
+    
+    <!-- Include all shared preferences to retain user settings -->
+    <include domain="sharedpref" />
+    
+    <!-- Exclude cache files, which are not needed for backup -->
+    <exclude domain="cache" />
+    
+    <!-- Note: This configuration prioritizes data portability and user convenience,
+         ensuring that users do not lose their data when switching devices. -->
+</full-backup-content> 

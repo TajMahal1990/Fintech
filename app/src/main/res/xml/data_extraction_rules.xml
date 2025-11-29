@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <!-- Include essential data in cloud backup -->
+        
+        <!-- Include the database for financial data -->
+        <include domain="database" />
+        
+        <!-- Include shared preferences for user settings -->
+        <include domain="sharedpref" />
+        
+        <!-- Exclude cache that might contain sensitive data -->
+        <exclude domain="cache" />
+    </cloud-backup>
+    
+    <device-transfer>
+        <!-- Include essential data in device transfer -->
+        
+        <!-- Include the database during device transfer -->
+        <include domain="database" />
+        
+        <!-- Include shared preferences during device transfer -->
+        <include domain="sharedpref" />
+        
+        <!-- Exclude cache during device transfer -->
+        <exclude domain="cache" />
+    </device-transfer>
+</data-extraction-rules> 

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Intro Showcase</string>
+    <string name="search_anything">Search anything!!</string>
+    <string name="search_description">You can search anything by clicking here.</string>
+    <string name="check_emails">Check emails</string>
+    <string name="check_emails_description">Click here to check/send emails</string>
+    <string name="go_back">Go back!!</string>
+    <string name="go_back_description">You can go back by clicking here.</string>
+    <string name="restart_intro">Restart Intro</string>
+    <string name="intro_showcase_view">Intro Showcase view</string>
+    <string name="intro_showcase_description">This is an example of Intro Showcase view</string>
+    <string name="user_profile">User profile</string>
+    <string name="update_profile_description">Click here to update your profile</string>
+    <string name="follow_me">Follow me</string>
+    <string name="follow_me_description">Click here to follow</string>
+    <string name="follow">Follow</string>
+</resources>

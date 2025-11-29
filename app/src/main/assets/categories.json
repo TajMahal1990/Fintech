@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Groceries",
+    "nameResId": "category_groceries",
+    "icon": "fastfood",
+    "type": "EXPENSE",
+    "description": "Food and household items",
+    "descriptionResId": "category_groceries_description",
+    "color": "#F44336"
+  },
+  {
+    "name": "Salary",
+    "nameResId": "category_salary",
+    "icon": "attach_money",
+    "type": "INCOME",
+    "description": "Regular income from employment",
+    "descriptionResId": "category_salary_description",
+    "color": "#4CAF50"
+  },
+  {
+    "name": "Transport",
+    "nameResId": "category_transport",
+    "icon": "directions_car",
+    "type": "EXPENSE",
+    "description": "Public transport, fuel, etc.",
+    "descriptionResId": "category_transport_description",
+    "color": "#2196F3"
+  },
+  {
+    "name": "Freelance",
+    "nameResId": "category_freelance",
+    "icon": "work",
+    "type": "INCOME",
+    "description": "Income from freelance work",
+    "descriptionResId": "category_freelance_description",
+    "color": "#009688"
+  },
+  {
+    "name": "Shopping",
+    "nameResId": "category_shopping",
+    "icon": "shopping_cart",
+    "type": "EXPENSE",
+    "description": "Clothing, electronics, etc.",
+    "descriptionResId": "category_shopping_description",
+    "color": "#E91E63"
+  },
+  {
+    "name": "Investment",
+    "nameResId": "category_investment",
+    "icon": "trending_up",
+    "type": "INCOME",
+    "description": "Income from investments",
+    "descriptionResId": "category_investment_description",
+    "color": "#8BC34A"
+  }
+] 

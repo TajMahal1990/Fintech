@@ -163,7 +163,7 @@ fun IntroShowcaseScope.AccountsScreen(
                EmptyStateAnimation(
                    title = stringResource(R.string.no_accounts_title),
                    subtitle = stringResource(R.string.no_accounts_subtitle),
-                   lottieResourceId = R.raw.wallet
+                   //lottieResourceId = R.raw.wallet
                )
            } else {
                Column(modifier = Modifier.fillMaxSize()) {

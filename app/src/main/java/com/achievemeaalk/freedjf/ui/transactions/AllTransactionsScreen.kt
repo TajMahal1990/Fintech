@@ -241,7 +241,7 @@ fun AllTransactionsScreen(
                             "No transactions match your search criteria."
                         else
                             null,
-                        lottieResourceId = R.raw.transactions
+                      //  lottieResourceId = R.raw.transactions
                     )
                 } else {
                     LazyColumn(

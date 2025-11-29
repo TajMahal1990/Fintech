@@ -14,7 +14,6 @@ import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -30,8 +29,6 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
@@ -40,20 +37,14 @@ import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.LayoutCoordinates
-import androidx.compose.ui.layout.boundsInWindow
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.IntOffset
-import androidx.compose.ui.unit.IntRect
-import androidx.compose.ui.unit.IntSize
-import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.window.Popup
-import androidx.compose.ui.window.PopupPositionProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.achievemeaalk.freedjf.BuildConfig
@@ -82,7 +73,6 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.math.atan2
 import kotlin.math.roundToInt
-
 
 
 @Composable
@@ -135,11 +125,11 @@ fun IntroShowcaseScope.DashboardScreen(
         isRecentTransactionsAnimated = true
     }
 
-    LaunchedEffect(state.financialInsights.isNotEmpty()) {
-        if (state.financialInsights.isEmpty()) {
-            showInsightsPopup = false
-        }
-    }
+ //   LaunchedEffect(state.financialInsights.isNotEmpty()) {
+ //       if (state.financialInsights.isEmpty()) {
+  //          showInsightsPopup = false
+   //     }
+  //  }
 
     LaunchedEffect(Unit) {
         viewModel.checkAndTriggerInAppReview(context as Activity)
@@ -155,6 +145,7 @@ fun IntroShowcaseScope.DashboardScreen(
 
     val verticalMargin = with(LocalDensity.current) { Dimensions.spacingSmall.toPx() }.roundToInt()
 
+    /*
     val popupPositionProvider = remember(insightsIconCoordinates) {
         object : PopupPositionProvider {
             override fun calculatePosition(
@@ -171,6 +162,10 @@ fun IntroShowcaseScope.DashboardScreen(
         }
     }
 
+     */
+
+
+    /*
     AnimatedVisibility(
         visible = showInsightsPopup && insightsIconCoordinates != null,
         enter = fadeIn(animationSpec = Motion.Animation.ElementEntrance) + slideInVertically(animationSpec = tween(300))
@@ -218,8 +213,17 @@ fun IntroShowcaseScope.DashboardScreen(
             }
 
 
+
+
+
+
         }
     }
+
+
+
+     */
+
 
     showDetailDialog?.let { detail ->
         TransactionDetailDialog(
@@ -289,10 +293,11 @@ fun IntroShowcaseScope.DashboardScreen(
                                 Column {
                                     Text(stringResource(R.string.total_balance),
                                         style = MaterialTheme.typography.headlineSmall,
-                                        color = MaterialTheme.colorScheme.onSurface)
+                                        color = Color.White)
                                     Text(stringResource(R.string.total_balance_tooltip),
                                         style = MaterialTheme.typography.bodyLarge,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant)
+                                        color = Color.White
+                                    )
                                 }
                             }
                         )
@@ -317,7 +322,7 @@ fun IntroShowcaseScope.DashboardScreen(
                 AnimatedVisibility(
                     visible = isSpendingChartAnimated,
                     enter = slideInVertically(animationSpec = spring(stiffness = Spring.StiffnessLow)) { it / 2 } + fadeIn()
-                ) {
+                ) { /*
                     SpendingByCategoryCard(
                         spendingByCategory = state.spendingByCategory,
                         currencyCode = currency,
@@ -339,14 +344,15 @@ fun IntroShowcaseScope.DashboardScreen(
                         ),
                         navController = navController
                     )
+                    */4
                 }
             }
 
             if (isUpcomingBillsVisible) {
-                AnimatedVisibility(
-                    visible = isUpcomingBillsAnimated,
-                    enter = slideInVertically(animationSpec = spring(stiffness = Spring.StiffnessLow)) { it / 2 } + fadeIn()
-                ) { /*
+               AnimatedVisibility(
+                   visible = isUpcomingBillsAnimated,
+                   enter = slideInVertically(animationSpec = spring(stiffness = Spring.StiffnessLow)) { it / 2 } + fadeIn() )
+                 { /*
                     UpcomingBillsCard(
                         upcomingBillsSummary = state.upcomingBillsSummary,
                         currency = currency,
@@ -382,7 +388,7 @@ fun IntroShowcaseScope.DashboardScreen(
                         if (state.recentTransactions.isEmpty()) {
                             EmptyStateAnimation(
                                 title = stringResource(R.string.no_transactions_title),
-                                lottieResourceId = R.raw.transactions
+                              //  lottieResourceId = R.raw.transactions
                             )
                         } else {
                             state.recentTransactions.forEach { transactionDetail ->
@@ -410,10 +416,8 @@ fun IntroShowcaseScope.DashboardScreen(
 @Composable
 fun EmptyStateAnimation(
     title: String,
-    subtitle: String? = null,
-    @RawRes lottieResourceId: Int
+    subtitle: String? = null
 ) {
-    val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(lottieResourceId))
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -421,16 +425,22 @@ fun EmptyStateAnimation(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        LottieAnimation(
-            composition = composition,
-            iterations = LottieConstants.IterateForever,
-            modifier = Modifier.size(Dimensions.emptyStateImageSize)
+
+        Icon(
+            painter = painterResource(R.drawable.logo), // добавь любую свою иконку
+            contentDescription = null,
+            tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.size(96.dp)
         )
+
+        Spacer(modifier = Modifier.height(Dimensions.spacingMedium))
 
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            color = Color.White
         )
+
         subtitle?.let {
             Spacer(modifier = Modifier.height(Dimensions.spacingSmall))
             Text(
@@ -444,17 +454,11 @@ fun EmptyStateAnimation(
     }
 }
 
+
 // ------------------------------------------------------------------------------------------------------
 
 @Composable
-fun IntroShowcaseScope.GreetingSection(
-    name: String,
-    onSettingsClick: () -> Unit,
-    insights: List<FinancialInsight>,
-    showInsightsBadge: Boolean,
-    onInsightsClick: () -> Unit,
-    onInsightsIconPositioned: (LayoutCoordinates) -> Unit
-) {
+fun IntroShowcaseScope.GreetingSection( name: String, onSettingsClick: () -> Unit, insights: List<FinancialInsight>, showInsightsBadge: Boolean, onInsightsClick: () -> Unit, onInsightsIconPositioned: (LayoutCoordinates) -> Unit ) {
     val greeting = getGreeting()
     Row(
         modifier = Modifier
@@ -503,8 +507,16 @@ fun IntroShowcaseScope.GreetingSection(
                     index = 2,
                     content = {
                         Column {
-                            Text(stringResource(R.string.settings_title), style = MaterialTheme.typography.headlineSmall, color = MaterialTheme.colorScheme.onPrimary)
-                            Text(stringResource(R.string.settings_tooltip), style = MaterialTheme.typography.bodyLarge, color = MaterialTheme.colorScheme.onPrimary)
+                            Text(
+                                stringResource(R.string.settings_title),
+                                style = MaterialTheme.typography.headlineSmall,
+                                color =Color.White
+                            )
+                            Text(
+                                stringResource(R.string.settings_tooltip),
+                                style = MaterialTheme.typography.bodyLarge,
+                                color = Color.White
+                            )
                         }
                     }
                 )
@@ -598,7 +610,7 @@ fun IncomeAndSpentSection(
 // ------------------------------------------------------------------------------------------------------
 
 @Composable
-fun SpendingByCategoryCard(
+fun SpendingByCategoryCard1(
     spendingByCategory: List<CategorySpending>,
     currencyCode: String,
     selectedTimeFilter: TimeFilter,

@@ -16,7 +16,7 @@ val DarkBackground = Color(0xFF0B0C0F)     // Main Black Background
 val DarkSurface = Color(0xFF121416)        // Glass-like Dark Surface
 
 val DarkOnSurface = Color(0xFFEFEFEF)      // Almost White
-val DarkOnSurfaceVariant = Color(0xFF9BA3AE) // Soft Gray Text
+val DarkOnSurfaceVariant = Color(0xFFFFFFFF) // Soft Gray Text
 
 val DarkError = Color(0xFFFF453A)
 
@@ -61,8 +61,8 @@ val WarningColor = Color(0xFFFF9F0A)
 val ProgressBarError = Color(0x4DFF3B30)
 
 val SurfaceVariant70 = Color(0xB3121416)
-val OnSurface70 = Color(0xB3EFEFEF)
-val OnSurface80 = Color(0xCCEFEFEF)
+val OnSurface70 = Color(0xFFFFFFFF)
+val OnSurface80 = Color(0xFFFFFFFF)
 
 val Success = Color(0xFF14D3A5)
 val OnSuccess = Color.White

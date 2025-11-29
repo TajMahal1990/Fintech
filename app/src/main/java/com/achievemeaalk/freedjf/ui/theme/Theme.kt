@@ -16,31 +16,53 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+
+
+// ----------------------------------------------------
+// DARK THEME — MAIN THEME OF THE APP
+// ----------------------------------------------------
+
 val DarkColorScheme = darkColorScheme(
     primary = DarkPrimary,
     onPrimary = DarkOnPrimary,
+
     background = DarkBackground,
     surface = DarkSurface,
-    onSurface = DarkOnSurface,
-    onSurfaceVariant = DarkOnSurfaceVariant,
+
+    onSurface = Color.White,              // FULL WHITE
+    onSurfaceVariant = Color.White,        // FULL WHITE
+
     error = DarkError
 )
+
+// ----------------------------------------------------
+// LIGHT THEME — SAME COLORS (PREMIUM LOOK)
+// ----------------------------------------------------
 
 val LightColorScheme = lightColorScheme(
     primary = LightPrimary,
     onPrimary = LightOnPrimary,
+
     background = LightBackground,
     surface = LightSurface,
-    onSurface = LightOnSurface,
-    onSurfaceVariant = LightOnSurfaceVariant,
+
+    onSurface = Color.White,               // FULL WHITE
+    onSurfaceVariant = Color.White,        // FULL WHITE
+
     error = LightError
 )
+
+// ----------------------------------------------------
+// EXTENDED COLORS FOR CUSTOM COMPONENTS
+// ----------------------------------------------------
 
 val lightExtendedColors = ExtendedColors(
     success = IncomeColor,
     onSuccess = OnIncomeColor,
+
     warning = WarningColor,
     onWarning = Color.White,
+
     neutral = ChartGray,
     onNeutral = Color.Black
 )
@@ -48,8 +70,10 @@ val lightExtendedColors = ExtendedColors(
 val darkExtendedColors = ExtendedColors(
     success = IncomeColor,
     onSuccess = OnIncomeColor,
+
     warning = WarningColor,
     onWarning = Color.White,
+
     neutral = ChartGray,
     onNeutral = Color.Black
 )
@@ -58,8 +82,10 @@ val LocalExtendedColors = staticCompositionLocalOf {
     lightExtendedColors
 }
 
+// ----------------------------------------------------
+// SHAPES
+// ----------------------------------------------------
 
-// Consistent shapes for the design system
 private val AppShapes = Shapes(
     extraSmall = RoundedCornerShape(Dimensions.cornerRadiusSmall),
     small = RoundedCornerShape(Dimensions.cornerRadiusMedium),
@@ -68,37 +94,38 @@ private val AppShapes = Shapes(
     extraLarge = RoundedCornerShape(Dimensions.cornerRadiusExtraLarge)
 )
 
+// ----------------------------------------------------
+// ACCESSOR
+// ----------------------------------------------------
+
 object AppTheme {
     val colors: ExtendedColors
-        @Composable
-        get() = LocalExtendedColors.current
+        @Composable get() = LocalExtendedColors.current
 }
+
+// ----------------------------------------------------
+// MAIN THEME WRAPPER
+// ----------------------------------------------------
 
 @Composable
 fun MonefyTheme(
-    useDarkTheme: Boolean = isSystemInDarkTheme(),
+    useDarkTheme: Boolean = true,    // FORCE DARK THEME
     content: @Composable () -> Unit
 ) {
-    val colors = if (useDarkTheme) {
-        DarkColorScheme
-    } else {
-        LightColorScheme
-    }
+    val colors = if (useDarkTheme) DarkColorScheme else LightColorScheme
+    val extendedColors = if (useDarkTheme) darkExtendedColors else lightExtendedColors
 
-    val extendedColors = if (useDarkTheme) {
-        darkExtendedColors
-    } else {
-        lightExtendedColors
-    }
-
+    // Change system bars (status + navigation)
     val view = LocalView.current
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = Color.Transparent.toArgb()
             window.navigationBarColor = Color.Transparent.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !useDarkTheme
-            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = !useDarkTheme
+
+            // Light icons OFF because theme is dark
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = false
+            WindowCompat.getInsetsController(window, view).isAppearanceLightNavigationBars = false
         }
     }
 

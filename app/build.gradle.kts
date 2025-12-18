@@ -100,6 +100,8 @@ dependencies {
     // Jetpack Compose dependencies using a bundle for convenience
     implementation(libs.bundles.compose)
     implementation(libs.androidx.constraintlayout.compose)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.constraintlayout)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(libs.androidx.biometric)

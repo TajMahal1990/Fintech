@@ -6,25 +6,32 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
     <uses-permission android:name="com.android.vending.BILLING" />
-
 
     <permission
         android:name="${applicationId}.permission.WIDGET_BROADCAST"
         android:protectionLevel="signature" />
 
     <application
-        android:name="com.achievemeaalk.freedjf.MonefyApplication"
+        android:name=".MonefyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:label="@string/app_name"
         android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.system.SystemScreen"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.mlkit.vision.DEPENDENCIES"
             android:value="ocr" />
@@ -53,7 +60,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="${applicationId}.androidx-startup"
@@ -77,7 +83,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/bills_widget_info" />
         </receiver>
-
         <receiver
             android:name=".ui.widget.ActionsWidgetReceiver"
             android:exported="true"
@@ -90,7 +95,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/actions_widget_info" />
         </receiver>
-
     </application>
 
 </manifest>

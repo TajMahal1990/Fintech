@@ -472,5 +472,14 @@
         <item quantity="other">%1$d лет</item>
     </plurals>
     <string name="unknown_period">Неизвестный период</string>
+
+
+
+    <string name="nav_dashboard">Дашборд</string>
+    <string name="nav_transactions">Сделки</string>
+    <string name="nav_payouts">Выплаты</string>
+    <string name="nav_notifications">Уведомления</string>
+    <string name="nav_system">Система</string>
+
 </resources>
 

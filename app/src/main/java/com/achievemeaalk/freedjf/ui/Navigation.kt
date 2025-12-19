@@ -31,6 +31,8 @@ import com.achievemeaalk.freedjf.ui.settings.SettingsScreen
 import com.achievemeaalk.freedjf.ui.settings.SettingsViewModel
 import com.achievemeaalk.freedjf.ui.settings.homescreen.HomeScreenSettingsScreen
 import com.achievemeaalk.freedjf.ui.settings.security.SecuritySettingsScreen
+import com.achievemeaalk.freedjf.deals.DealsScreen
+import com.achievemeaalk.freedjf.ui.system.NotificationsScreen
 import com.achievemeaalk.freedjf.ui.transactions.AddEditTransactionScreen
 import com.achievemeaalk.freedjf.ui.transactions.AllTransactionsScreen
 import com.achievemeaalk.freedjf.ui.transactions.ReceiptScannerScreen
@@ -104,17 +106,17 @@ fun IntroShowcaseScope.Navigation(
             }
         }
 
-        // 🔹 ALIAS: Transactions = Accounts (временно)
+        // транзакции переделать
         composable("transactions") {
             AnimatedScreen(tier = AnimationTier.Tier2) {
                 AccountsScreen(navController = navController)
             }
         }
 
-        // 🔹 ALIAS: Payouts = Accounts (временно)
+        // сделки
         composable("payouts") {
             AnimatedScreen(tier = AnimationTier.Tier2) {
-                AccountsScreen(navController = navController)
+                DealsScreen(navController = navController)
             }
         }
 
@@ -237,7 +239,7 @@ fun IntroShowcaseScope.Navigation(
         // 🔹 ALIAS: Notifications = Settings (временно)
         composable("notifications") {
             AnimatedScreen(tier = AnimationTier.Tier3) {
-                SettingsScreen(navController = navController)
+                NotificationsScreen(navController = navController)
             }
         }
 

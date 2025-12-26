@@ -33,6 +33,7 @@ import com.achievemeaalk.freedjf.ui.settings.homescreen.HomeScreenSettingsScreen
 import com.achievemeaalk.freedjf.ui.settings.security.SecuritySettingsScreen
 import com.achievemeaalk.freedjf.deals.DealsScreen
 import com.achievemeaalk.freedjf.ui.system.NotificationsScreen
+import com.achievemeaalk.freedjf.ui.system.SystemScreen
 import com.achievemeaalk.freedjf.ui.transactions.AddEditTransactionScreen
 import com.achievemeaalk.freedjf.ui.transactions.AllTransactionsScreen
 import com.achievemeaalk.freedjf.ui.transactions.ReceiptScannerScreen
@@ -246,7 +247,7 @@ fun IntroShowcaseScope.Navigation(
         // 🔹 ALIAS: System = Settings (временно)
         composable("system") {
             AnimatedScreen(tier = AnimationTier.Tier3) {
-                SettingsScreen(navController = navController)
+                SystemScreen(navController = navController)
             }
         }
 

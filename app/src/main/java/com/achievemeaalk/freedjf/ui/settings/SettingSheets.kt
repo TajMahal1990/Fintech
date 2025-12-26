@@ -194,7 +194,7 @@ fun NotificationsSettingsSheet(viewModel: SettingsViewModel) {
         Text(
             text = stringResource(R.string.due_soon_reminders_description, dueSoonDays),
             style = MaterialTheme.typography.bodySmall,
-            modifier = Modifier.align(Alignment.End)
+            modifier = Modifier.align(Alignment.End) //
         )
     }
 }

@@ -526,12 +526,15 @@ fun IntroShowcaseScope.GreetingSection( name: String, onSettingsClick: () -> Uni
                 },
             interactionSource = interactionSource
         ) {
-            Icon(Icons.Default.Settings, contentDescription = stringResource(R.string.settings_content_description))
+            Icon(
+                imageVector = Icons.Default.Settings,
+                contentDescription = stringResource(R.string.settings_content_description),
+                tint = Color.White
+            )
+
         }
     }
 }
-
-// ------------------------------------------------------------------------------------------------------
 
 @Composable
 fun AnimatedCounterText(

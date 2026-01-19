@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.remember
 import androidx.compose.ui.draw.clip
 
@@ -44,9 +45,8 @@ fun DealsScreen(
         Spacer(Modifier.height(12.dp))
 
         Text(
-            text = "Deals",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Medium
+            text = "Payout",
+            style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(Modifier.height(8.dp))

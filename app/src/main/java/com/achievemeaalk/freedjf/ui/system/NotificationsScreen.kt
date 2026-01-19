@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
@@ -58,9 +59,8 @@ fun NotificationsScreen(
         Spacer(Modifier.height(12.dp))
 
         Text(
-            text = "Notifications",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Medium
+            text = "Notifications" ,
+            style = MaterialTheme.typography.headlineMedium
         )
 
         Spacer(Modifier.height(8.dp))
